@@ -1,0 +1,345 @@
+<html manifest="phaserchains.appcache" lang="en">
+
+<head>
+    <title>Phaser Chains - A great new way to search on the Phaser Documentation and API</title>
+    <style type="text/css">
+        body {
+            font-family: helvetica, sans-serif;
+            padding: 0px;
+            margin: 0px;
+            background: white;
+        }
+        
+        input,
+        button {
+            padding: 0.5em;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            font-size: small;
+            text-align: right;
+            padding: 0.5em;
+        }
+        
+        #title {
+            text-align: right;
+        }
+		
+		#PhaserEditor {
+			font-size: small;
+		}
+		
+        .member-help {
+            color: darkgreen;
+            font-family: monospace;
+        }
+        
+        .member-name {
+            font-family: monospace;
+        }
+        
+        .param-table {
+            border-spacing: 0px;
+            border-collapse: collapse;
+            font-family: monospace;
+        }
+        
+        .param-table td,
+        .param-table th {
+            padding: 0.5em;
+            border: 1px solid rgba(0, 0, 255, 0.15);
+        }
+        
+        .selected {
+            background: rgba(0, 0, 255, 0.15);
+        }
+        
+        .highlight,
+        .highlight-example {
+            padding: 2px;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            background: rgba(255, 235, 0, 0.17);
+        }
+        
+        .highlight-example {
+            background: rgba(0, 200, 0, 0.07);
+        }
+        
+        .link {
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
+        }
+        
+        .raw-link {
+            display: inline-block;
+            padding: 0.5em;
+        }
+        
+        #result_count {
+            font-size: small;
+            padding: 0.5em;
+        }
+        
+        #loading {
+            color: white;
+            background: #cc2b2b;
+            padding: 0.5em;
+            padding-top: 1.5em;
+            display: block;
+            width: 20em;
+            text-align: center;
+            margin-top: -1em;
+        }
+        
+        h1 {
+            text-transform: uppercase;
+            font-size: 30px;
+            color: #FFF;
+            text-align: right;
+            text-shadow: 1px 1px 2px rgba(182, 27, 242, 0.4), 1px -1px 2px rgba(182, 27, 242, 0.4), -1px 1px 2px rgba(182, 27, 242, 0.4), -1px -1px 2px rgba(182, 27, 242, 0.4), 0px 0px 20px rgba(0, 134, 255, 0.75);
+        }
+        
+        #top-panel {
+            background: #E0E4F1;
+            padding-right: 1em;
+            padding-bottom: 0.2em;
+        }
+        
+        #container {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #center-panel {}
+        
+        .section-title {
+            color: #6f7079;
+            margin: 0px;
+            padding-bottom: 0.5em;
+            padding-top: 0.5em;
+            display: inline-block;
+            font-size: small;
+        }
+        
+        #bookmarks {}
+        
+        .bookmark {
+            font-size: small;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        .chain-list-item,
+        .example-list-item {
+            padding: 5px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: rgba(0, 0, 255, 0.10);
+            overflow: hidden;
+        }
+        
+        .depth-0 {
+            color: black;
+        }
+        
+        .depth-1,
+        .depth-2 {
+            font-style: italic;
+        }
+        
+        .center-table {
+            width: 100%;
+        }
+        
+        .center-table td {
+            vertical-align: top;
+            padding: 0.2em;
+        }
+        
+        .help-vertical,
+        .help-horizontal {
+            padding-left: 0.5em;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgba(0, 0, 255, 0.10);
+            background: rgba(0, 0, 255, 0.01);
+        }
+        
+        .chain-list,
+        .example-list {
+            max-height: 20em;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgba(0, 0, 255, 0.10);
+            font-family: monospace;
+            cursor: default;
+            background: rgba(255, 255, 255, 0.9);
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        
+        .example-link {
+            float: right;
+            color: gray;
+        }
+        
+        .example-line {
+            float: left;
+        }
+        
+        .icon-field {
+            background: url('data:image/gif;base64,R0lGODlhEAAQALMAAEF3r1OGuhBcnBljoCZrpyxwqEiDs7DJ3////////wAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAAkALAAAAAAQABAAAAQjMMlJq70468016YkRGNxRIMWxDUg7aCaAAGkm3LgA7nzvUxEAOw==');
+        }
+        
+        .icon-method {
+            background: url('data:image/gif;base64,R0lGODlhEAAQAMQAAAOASAWBSR2MVi6VYEOcbE2jc2SuhXG2jW+xinW3kD+XYD+YX0qbZVancF+qdGKqcHGxdnGxdYS/hIK9goS+hIK1f4i5gYi4gYm4gZjGkJe9iKvPmavPmLTSnf///wAAACH5BAEAAB4ALAAAAAAQABAAAAU+oCeOZGmeaKquLJoEQ7IWTpc5RXo0W881BxRgQilKJgCU4AGBRCAPAcqwsFwwFoUhRWBoKgzCCgFDtM5oVggAOw==');
+        }
+        
+        .icon-field,
+        .icon-method,
+        .del-img {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .del-img {
+            cursor: pointer;
+            background: url('data:image/gif;base64,R0lGODlhEAAQANUAAMczNfRxdPRzdPNydPNzddgqL+AsNN8sM8cpMOY2PuU2PsUgK+UwOfJVYPRja/NjavNja/Nka8UYJ8YZKMUZJ8YgLPJUYMUTJfE/UvA/UfJIWPFIWNRldN+cqMpdSc5uXspXRspYRslYRtWIfMlQQ9ymoMlHPslHP8hHP8c9OeBhW/WBfcc9OuNST/WAfvSAfuPExP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADEALAAAAAAQABAAAAZ8wJhwSCwaj0eYZ1QceWBEWKgVYgpHohYIKiyRXCvSp/QhvcIl4ghFEKhMqkHgZCVyWBHIw/FIcZAACg0NFgkASDEIDBsaGgwISBwVGJSUC39FHBOUBRIFGBkUmEIdF6AXHB0cphkXHUMwFwaoQ6sHF1xCsaNCq7mIwMExQQA7');
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59049830-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body>
+    <table id="loading-div" style="position:absolute">
+        <tr>
+            <td style="width:50%"></td>
+            <td><span id="loading">loading phaserjs documentation...</span>
+            </td>
+            <td style="width:50%"></td>
+        </tr>
+    </table>
+
+
+    <div id="container" style="display:none">
+
+        <div id="top-panel">
+			<div id="PhaserEditor">
+				<a href="http://phasereditor.boniatillo.com" target="_blank">try phaser editor!</a>
+			</div>
+            <div id="title">
+                <h1>Phaser Chains</h1>
+                <h5>Alternative documentation browser for <a target="_blank" href="http://phaser.io">Phaser</a></h5>
+            </div>
+            <div>
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:100%;">
+                            <input id="search" type="text" style="width:100%;" value="game." placeholder="Type any method name or chain, like 'load.', also you can use wildcards '*' like in 'game*events'"></input>
+                        </td>
+                        <td>
+                            <button id="add_bookmark" title="Bookmark that query">
+                                <img src="assets/bookmark.gif" alt="submit"></img>
+                            </button>
+                        </td>
+                        <td>
+                            <button id="maximize" title="Maximize">
+                                <img src="assets/maximize.gif"></img>
+                            </button>
+                        </td>
+                        <td>
+                            <button id="layout" title="Change layout.">
+                                <img src="assets/layout.gif"></img>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="bookmarks"></div>
+        </div>
+        <!-- top panel -->
+
+        <div id="center-panel">
+        </div>
+
+        <div style="margin: 5px; float: right;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PhaserChains -->
+            <ins class="adsbygoogle" style="display:inline-block;width:125px;height:125px" data-ad-client="ca-pub-3801412451410067" data-ad-slot="6965250033"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <br>
+        <br>
+        <footer>
+			<span>Supports Phaser v2.4.7 | </span>
+            <span>To install on <a target='_blank' href="http://brackets.io">Brackets</a> and other editors <a target="_blank" href="https://github.com/boniatillo-com/PhaserChains"> (read this)</a> | </span>
+			<a target="_blank" href="http://twitter.com/boniatillo_com">Twitter</a> |
+			<a target="_blank" href="http://www.html5gamedevs.com/topic/12051-phaser-chains-a-different-way-to-explore-phaser-docs/#entry69346">Forum</a> |
+			<a target="_blank" href="https://github.com/boniatillo-com/PhaserChains">Source &amp; Guide</a> |
+			<span>Arian Fornaris Copyright &copy; 2016</span>
+        </footer>
+        <br>
+        <br>
+    </div>
+    <!-- container -->
+
+    <script src="lib/jquery.min.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/data.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#loading-div').fadeOut(1000);
+            $('#container').fadeIn(1000);
+            $('input').focus();
+
+            var main = new Main();
+            main.run();
+        });
+
+        // Check if a new cache is available on page load.
+        window.addEventListener('load', function (e) {
+            window.applicationCache.addEventListener('downloading', function () {
+                $('#loading').html('updating the application...');
+                $('#loading-div').fadeIn(1000);
+                $('#loading-div').fadeOut(1000);
+            }, false);
+            window.applicationCache.addEventListener('updateready', function (e) {
+                if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                    alert('A new version of Phaser Chains was installed, you need to refresh the browser to run the last changes.');
+                }
+            }, false);
+
+        }, false);
+    </script>
+</body>
+
+</html>

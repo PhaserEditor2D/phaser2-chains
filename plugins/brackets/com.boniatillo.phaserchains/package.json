@@ -1,0 +1,14 @@
+{
+    "name": "com.boniatillo.phaserchains",
+    "title": "Phaser Chains",
+    "description": "A great new way to search the Phaser Documentation (Open View > Phaser Chains)",
+    "homepage": "https://github.com/boniatillo-com/PhaserChains",
+    "version": "1.0.3",
+    "author": "boniatillo.com <developers@boniatillo.com> (http://boniatillo.com)",
+    "license": "MIT",
+    "keywords": ["phaser", "completion", "assist", "game", "doc", "api"],
+    "engines": {
+        "brackets": ">=1.1.0"
+    },
+    "i18n": [ "en"]    
+}
