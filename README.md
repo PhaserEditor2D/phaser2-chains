@@ -14,7 +14,7 @@ moveto
 Note there is a panel with the matching Phaser examples. Keep an eye on that, it always shows interesting results.
 
 
-Just try with the [Phaser Chains](http://phaserchains.boniatillo.com) website, but it is also avaiable as [Brackets](http://brackets.io) extension and was embedded in the [Phaser official website](http://phaser.io/learn/chains).
+Just try with the [Phaser Chains](http://phaserchains.boniatillo.com) website, but it is also available as [Brackets](http://brackets.io) extension and was embedded in the [Phaser official website](http://phaser.io/learn/chains).
 
 This tool uses the Phaser Editor metadata.
 
