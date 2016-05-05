@@ -19,6 +19,8 @@ Phaser Chains has a [native implementation](http://phasereditor.boniatillo.com/b
 
 You can integrate Phaser Chains with any other editor containing a "web view". For example, Eclipse has an Internal Web Browser view, you can open it and request the URL:
 
-```http://phaserchains.boniatillo.com/?embedded&horizontal-layout&eclipse```
+```
+http://phaserchains.boniatillo.com/?embedded&horizontal-layout&eclipse
+```
 
 It opens a webpage with a compact layout. So yo can do the same in any other editor or IDE. If the webpage is not displaying correctly, probably it is because the used browser (Internet Explorer?) is not compatible. Note the word ```&eclipse``` at the end of the URL. You should write there the name of your editor, in this way we can know the most used editors and provide better support for them in the future.
