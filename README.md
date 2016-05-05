@@ -1,7 +1,18 @@
-# README #
+# Phaser Chains
 
 Phaser Chains is an alternative but improved place to browse the [Phaser](http://phaser.io) [API and docs](http://docs.phaser.io). With this service you don't need to navigate into the tree of the 
 Phaser types and methods, you only need to write the method (or method chain) you are interested about and the matching Phaser API is shown, together with the documentation.
+
+Try with:
+
+```
+game*shake
+input*down
+moveto
+```
+
+Note there is a panel with the matching Phaser examples. Keep an eye on that, it always shows interesting results.
+
 
 Just try with the [Phaser Chains](http://phaserchains.boniatillo.com) website, but it is also avaiable as [Brackets](http://brackets.io) extension and was embedded in the [Phaser official website](http://phaser.io/learn/chains).
 
