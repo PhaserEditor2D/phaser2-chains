@@ -1,4 +1,6 @@
-# Phaser Chains
+# Phaser Chains (for Phaser v2)
+
+[Try Phaser Chains for Phaser v3](https://github.com/PhaserEditor2D/phaser3-chains/)
 
 Phaser Chains is an alternative but improved place to browse the [Phaser](http://phaser.io) [API and docs](http://docs.phaser.io). With this service you don't need to navigate into the tree of the 
 Phaser types and methods, you only need to write the method (or method chain) you are interested about and the matching Phaser API is shown, together with the documentation.
